@@ -164,7 +164,7 @@ namespace RonJamesTheronProgram
             stopwatch.Start();
 
             //Problem 2
-            Console.WriteLine("Problem 2 \n");
+            Console.WriteLine("Hidden Combination Problem \n");
 
             //Generate an integer array using the path to the text file.
             string path = @"problem2.txt";

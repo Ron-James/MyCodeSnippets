@@ -14,81 +14,20 @@ namespace RonJamesTheronProgram
         /// </summary>
         /// <param name="maxValue">The maximum value in the fibonacci sequence.</param>
         /// <returns>The sum of all the even values in the fibonacci sequence up to maxValue<./returns>
+        
         static int SumOfEvenFibonacciValues(int maxValue)
         {
             int totalSum = 0;
-            int[] fibonacciValues = new int[maxValue];
+            List<int> fibonacciValues = new List<int>();
+            fibonacciValues.Add(0);
+            fibonacciValues.Add(1);
 
             Console.WriteLine("The even fibonacci values up to " + maxValue.ToString() + " include:");
-            for (int loop = 0; loop <= maxValue; loop++)
-            {
-                int currentSequenceValue = 0;
-                bool loopLessThanTwo = loop < 2;
-
-                //If the loop index is less than 2, set the current fibonacci value equal to loop index.
-                //If the loop index is more than or equal to 2, the current fibonnaci value is equal to the sum of the previous two sequence values.
-                //Set the current index in the fibonacci values array to the current sequence value.
-                if (loopLessThanTwo)
-                {
-                    currentSequenceValue = loop;
-                    fibonacciValues[loop] = currentSequenceValue;
-                }
-                else
-                {
-                    currentSequenceValue = fibonacciValues[loop - 1] + fibonacciValues[loop - 2];
-                    fibonacciValues[loop] = currentSequenceValue;
-                }
-
-                // If the current sequence value exceeds the maximum value inputed in the parameters,
-                // break the loop as the operation is complete.
-                bool exceedsMaxValue = currentSequenceValue >= maxValue;
-                if (exceedsMaxValue)
-                {
-                    break;
-                }
-
-                //If the current sequence value is an even number, print it out and add it to the running total.
-                bool isEven = currentSequenceValue % 2 == 0;
-                if (isEven)
-                {
-                    Console.Write(currentSequenceValue.ToString() + " ");
-                    totalSum += currentSequenceValue;
-                }
-            }
-            return totalSum;
-        }
-        
-        static int SumOfEvenFibonacciValuesWhile(int maxValue)
-        {
-            int totalSum = 0;
-            int[] fibonacciValues = new int[maxValue];
-
-            Console.WriteLine("The even fibonacci values up to " + maxValue.ToString() + " include:");
-            bool isComplete = false;
-            int loopIndex = 0;
+            int loopIndex = 2;
             while(true){
-                loopIndex++; 
-            }
-
-
-            for (int loop = 0; loop <= maxValue; loop++)
-            {
-                int currentSequenceValue = 0;
-                bool loopLessThanTwo = loop < 2;
-
-                //If the loop index is less than 2, set the current fibonacci value equal to loop index.
-                //If the loop index is more than or equal to 2, the current fibonnaci value is equal to the sum of the previous two sequence values.
-                //Set the current index in the fibonacci values array to the current sequence value.
-                if (loopLessThanTwo)
-                {
-                    currentSequenceValue = loop;
-                    fibonacciValues[loop] = currentSequenceValue;
-                }
-                else
-                {
-                    currentSequenceValue = fibonacciValues[loop - 1] + fibonacciValues[loop - 2];
-                    fibonacciValues[loop] = currentSequenceValue;
-                }
+                //Calculate the current fibonacci sequence value and the current loop index
+                int currentSequenceValue = fibonacciValues[loopIndex - 1] + fibonacciValues[loopIndex - 2];
+                fibonacciValues.Add(currentSequenceValue);
 
                 // If the current sequence value exceeds the maximum value inputed in the parameters,
                 // break the loop as the operation is complete.
@@ -105,6 +44,8 @@ namespace RonJamesTheronProgram
                     Console.Write(currentSequenceValue.ToString() + " ");
                     totalSum += currentSequenceValue;
                 }
+
+                loopIndex++; 
             }
             return totalSum;
         }
@@ -131,13 +72,12 @@ namespace RonJamesTheronProgram
             //Generate the sum of all the even fibonacci values.
             int evenFibonacciSum = SumOfEvenFibonacciValues(maxValue);
 
-            Console.WriteLine("\n The sum of all the even values is " + evenFibonacciSum.ToString() + "\n");
+            Console.WriteLine("\nThe sum of all the even values is " + evenFibonacciSum.ToString() + "\n");
 
             stopwatch.Stop();
 
             TimeSpan timeSpanValue = stopwatch.Elapsed;
             Console.WriteLine("Runtime for this algorithm: " + timeSpanValue.TotalMilliseconds.ToString() + "ms \n");
-            Console.WriteLine("Runtime for this algorithm: " + timeSpanValue.TotalSeconds.ToString() + "seconds \n");
             stopwatch.Restart();
 
 
