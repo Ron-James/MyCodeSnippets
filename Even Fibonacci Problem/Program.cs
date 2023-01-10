@@ -60,7 +60,7 @@ namespace RonJamesTheronProgram
             stopwatch.Start();
 
             //Problem 1
-            Console.WriteLine("Problem 1 \n");
+            Console.WriteLine("Even Fibonacci Problem \n");
 
             //Take in the max fibonacci sequence value.
             int maxValue = 10000000; 
